@@ -39,6 +39,7 @@ body {
 
 #activeApplyIcon {
   width: 175px;
+  cursor: pointer;
 }
 
 /* Form component */
