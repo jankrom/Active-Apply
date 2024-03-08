@@ -1,12 +1,18 @@
 /* whole application */
 
 :root {
-  --dark-color: #2f2f3b;
+  --dark-gray-color: #2f2f3b;
+  --darkish-blue-color: #0c7acd;
 }
+/* #0059bb
+#0c7acd
+#199cdf
+#26bef2 */
 
 #root {
   width: 400px;
-  background: rgba(0, 0, 0, 0.103);
+  height: 500px;
+  background: var(--dark-gray-color);
 }
 
 body {
@@ -24,9 +30,10 @@ body {
 /* NavBar component */
 
 #navBar {
-  background: var(--dark-color);
+  background: var(--dark-gray-color);
   position: relative;
   padding: 0px 5px;
+  border-bottom: 2px solid var(--darkish-blue-color);
 }
 
 #activeApplyIcon {
