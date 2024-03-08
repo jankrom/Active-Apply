@@ -26,6 +26,7 @@ const Navbar = () => {
             src={activeApplyIcon}
             alt="Active Apply logo"
             id="activeApplyIcon"
+            onClick={() => console.log("hi")}
           />
           <Box>
             {navItems.map((item) => (

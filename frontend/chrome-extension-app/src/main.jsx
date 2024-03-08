@@ -4,6 +4,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
 import MainPage from "./pages/MainPage"
 import ProfilePage from "./pages/ProfilePage"
+import Footer from "./components/Footer"
+import Navbar from "./components/Navbar"
 
 import "./index.css"
 
@@ -14,6 +16,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    <Navbar />
     <RouterProvider router={router} />
+    <Footer />
   </React.StrictMode>
 )
