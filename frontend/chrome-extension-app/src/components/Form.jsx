@@ -2,6 +2,7 @@ import TextField from "@mui/material/TextField"
 import Box from "@mui/material/Box"
 import Button from "@mui/material/Button"
 import SendIcon from "@mui/icons-material/Send"
+import { CircularProgress } from "@mui/material"
 
 import { useState, useEffect } from "react"
 
@@ -11,6 +12,11 @@ const Form = () => {
   const [position, setPosition] = useState("")
   const [positionNumber, setPositionNumber] = useState("")
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10))
+  const [loading, setLoading] = useState(false)
+
+  const handleSubmitClick = () => {
+    setLoading(!loading)
+  }
 
   return (
     <Box
@@ -24,6 +30,7 @@ const Form = () => {
           "&:hover fieldset": { border: "1.5px solid #0c7acd" },
         },
         marginTop: "10px",
+        marginBottom: "10px",
       }}
       noValidate
       autoComplete="off"
@@ -90,9 +97,30 @@ const Form = () => {
         value={date}
         onChange={(e) => setDate(e.target.value)}
       />
-      <Button id="submit-btn" variant="contained" endIcon={<SendIcon />}>
-        Send
-      </Button>
+      <Box sx={{ m: 1, position: "relative" }}>
+        <Button
+          id="submit-btn"
+          variant="contained"
+          endIcon={<SendIcon />}
+          onClick={handleSubmitClick}
+          disabled={loading}
+        >
+          Send
+        </Button>
+        {loading && (
+          <CircularProgress
+            size={24}
+            sx={{
+              color: "white",
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              marginTop: "-12px",
+              marginLeft: "-12px",
+            }}
+          />
+        )}
+      </Box>
     </Box>
   )
 }

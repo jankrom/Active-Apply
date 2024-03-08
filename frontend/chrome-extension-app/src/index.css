@@ -33,13 +33,17 @@ body {
 #navBar {
   background: var(--dark-gray-color);
   position: relative;
-  padding: 0px 5px;
+  padding: 0px 10px;
   border-bottom: 2px solid var(--darkish-blue-color);
 }
 
 #activeApplyIcon {
   width: 175px;
   cursor: pointer;
+}
+
+.rotate90 {
+  transform: rotate(90deg);
 }
 
 /* Form component */
