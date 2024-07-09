@@ -3,7 +3,8 @@ import AccountBoxIcon from "@mui/icons-material/AccountBox"
 import HomeIcon from "@mui/icons-material/Home"
 
 const Footer = () => {
-  return (<div></div>
+  return (
+    <div></div>
     // <Tabs
     //   id="bottom-tabs"
     //   aria-label="icon tabs example"
