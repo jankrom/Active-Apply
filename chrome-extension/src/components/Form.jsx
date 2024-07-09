@@ -2,11 +2,10 @@ import TextField from "@mui/material/TextField"
 import Box from "@mui/material/Box"
 import Button from "@mui/material/Button"
 import SendIcon from "@mui/icons-material/Send"
-import CheckIcon from "@mui/icons-material/Check"
-import { CircularProgress, Alert } from "@mui/material"
-import { green } from "@mui/material/colors"
+import { CircularProgress } from "@mui/material"
 
 import { useState, useEffect } from "react"
+import toast from "react-hot-toast"
 
 const Form = () => {
   const [companyUrl, setCompanyUrl] = useState("")
@@ -15,16 +14,14 @@ const Form = () => {
   const [positionNumber, setPositionNumber] = useState("")
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10))
   const [loading, setLoading] = useState(false)
-  const [isError, setError] = useState(false)
-  const [success, setSuccess] = useState(false)
 
   const handleSubmitClick = () => {
     setLoading(!loading)
     setTimeout(() => {
-      setSuccess(true)
       setLoading(false)
-      setError(true)
     }, 1000)
+
+    toast.success("YAY")
   }
 
   return (
@@ -135,25 +132,8 @@ const Form = () => {
               }}
             />
           )}
-          {success && (
-            <CheckIcon
-              sx={{
-                position: "absolute",
-                left: 110,
-                bgcolor: green[500],
-                color: "white",
-                padding: 0.9,
-                borderRadius: 120,
-              }}
-            />
-          )}
         </Box>
       </Box>
-      {isError && (
-        <Alert severity="error" sx={{ width: "25%" }}>
-          Error
-        </Alert>
-      )}
     </Box>
   )
 }

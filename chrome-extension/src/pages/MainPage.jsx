@@ -1,25 +1,29 @@
-import { useState } from "react"
-import { createClient } from "@supabase/supabase-js"
-import { loginWithGoogle } from "../auth/login-helper"
+import { useState, useEffect } from "react"
 
 import Form from "../components/Form"
-import { useEffect } from "react"
+import Login from "../components/Login"
+import Loading from "../components/Loading"
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [loggedIn, setLoggedIn] = useState(false)
+  const [checkedLogIn, setCheckedLogIn] = useState(false)
 
   useEffect(async () => {
     const resp = await fetch(
       `${import.meta.env.VITE_ORIGIN_URL}/api/login/chrome-extension/verify`
     )
     const status = resp?.status
-    console.log(status)
+
+    if (status === 200) setLoggedIn(true)
+
+    setCheckedLogIn(true)
   }, [])
 
   return (
     <div id="appContainer">
-      <button onClick={loginWithGoogle}>CLICK ME</button>
-      <Form />
+      {!checkedLogIn && <Loading />}
+      {checkedLogIn && loggedIn && <Form />}
+      {checkedLogIn && !loggedIn && <Login />}
     </div>
   )
 }
