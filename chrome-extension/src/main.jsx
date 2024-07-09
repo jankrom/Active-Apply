@@ -19,6 +19,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <Navbar />
     {/* <RouterProvider router={router} /> */}
     <MainPage />
-    <Footer />
+    {/* <Footer /> */}
   </React.StrictMode>
 )
