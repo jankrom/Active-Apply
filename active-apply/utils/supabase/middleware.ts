@@ -1,4 +1,3 @@
-import loginChromeExtension from "@/lib/check-auth-extension"
 import { createServerClient } from "@supabase/ssr"
 import { NextResponse, type NextRequest } from "next/server"
 
@@ -38,13 +37,6 @@ export async function updateSession(request: NextRequest) {
     data: { user },
     error,
   } = await supabase.auth.getUser()
-
-  // check if user is authenticating from chrome extension
-  // if (request.nextUrl.pathname.startsWith("/auth/login/chrome-extension")) {
-  //   const url: string = await loginChromeExtension()
-  //   // redirect the user to the google login page
-  //   return NextResponse.redirect(new URL(url, request.url))
-  // }
 
   // User can only access landing page and login page if not logged in
   if (

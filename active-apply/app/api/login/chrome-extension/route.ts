@@ -1,23 +1,22 @@
 "use server"
 
-import { headers } from "next/headers"
 import { NextResponse } from "next/server"
-import { redirect } from "next/navigation"
 
 import { createClient } from "@/utils/supabase/server"
+import loginWithGoogleOauth from "@/lib/login-google"
 
 export async function GET(req: Request) {
-  const supabase = createClient()
-  const origin = process.env.WEBSITE_URL
+  // const supabase = createClient()
+  // const origin = process.env.WEBSITE_URL
 
-  console.log(`${origin}/auth/callback`)
+  // const { data, error } = await supabase.auth.signInWithOAuth({
+  //   provider: "google",
+  //   options: {
+  //     redirectTo: `${origin}/auth/callback`,
+  //   },
+  // })
 
-  const { data, error } = await supabase.auth.signInWithOAuth({
-    provider: "google",
-    options: {
-      redirectTo: `${origin}/auth/callback`,
-    },
-  })
+  const { data, error } = await loginWithGoogleOauth()
 
   if (error) {
     return NextResponse.redirect(new URL("/error", req.url))
