@@ -42,7 +42,8 @@ const Navbar = () => {
               fontSize="medium"
               sx={{
                 fontSize: 30,
-                "&:hover": { fontSize: 32 },
+                opacity: "0.33",
+                "&:hover": { fontSize: 32, opacity: "1" },
                 transitionDuration: "150ms",
               }}
               onClick={handleSettingsClick}

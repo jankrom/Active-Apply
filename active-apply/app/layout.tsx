@@ -1,7 +1,11 @@
-import { GeistSans } from "geist/font/sans"
+import type { Metadata } from "next"
+import { Inter } from "next/font/google"
+
 import "./globals.css"
 
-export const metadata = {
+const inter = Inter({ subsets: ["latin"] })
+
+export const metadata: Metadata = {
   title: "Active Apply",
   description: "Easily track where you apply",
 }
@@ -12,12 +16,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={GeistSans.className}>
-      <body className="bg-background text-foreground">
-        <main className="min-h-screen flex flex-col items-center">
-          {children}
-        </main>
-      </body>
+    <html lang="en">
+      <body className={inter.className}>{children}</body>
     </html>
   )
 }
