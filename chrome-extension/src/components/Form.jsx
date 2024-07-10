@@ -116,6 +116,10 @@ const Form = () => {
             endIcon={<SendIcon />}
             onClick={handleSubmitClick}
             disabled={loading}
+            sx={{
+              "&:hover": { scale: "1.05" },
+              transitionDuration: "150ms",
+            }}
           >
             Send
           </Button>

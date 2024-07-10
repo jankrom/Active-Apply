@@ -40,7 +40,11 @@ const Navbar = () => {
           <IconButton aria-label="options" sx={{ color: "#fff" }}>
             <SettingsIcon
               fontSize="medium"
-              sx={{ fontSize: 30, "&:hover": { fontSize: 35 } }}
+              sx={{
+                fontSize: 30,
+                "&:hover": { fontSize: 32 },
+                transitionDuration: "150ms",
+              }}
               onClick={handleSettingsClick}
             />
           </IconButton>
