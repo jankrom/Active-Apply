@@ -1,0 +1,46 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["multiSchema"]
+}
+
+datasource db {
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  directUrl         = env("DIRECT_URL")
+}
+
+
+model Spreadsheet {
+  id         String  @id @db.Uuid @default(dbgenerated("gen_random_uuid()"))
+  userId     String  @db.Uuid
+  name       String   
+  totalJobs  Int     @default(0)
+  rows       SpreadsheetRow[]
+}
+
+model SpreadsheetRow {
+  id             Int     @id @default(autoincrement())
+  companyName    String
+  position       String?
+  positionNumber String?
+  date           DateTime @default(now())
+  spreadsheet    Spreadsheet @relation(fields: [spreadsheetId], references: [id])
+  spreadsheetId  String @db.Uuid
+  userId         String @db.Uuid
+}
+
+model Profile {
+  id                     String @id @default(cuid())
+  userId                 String @unique @db.Uuid
+  currentlyPaid          Boolean @default(false)
+  stripeCustomerId       String? @unique @map(name: "stripe_customer_id")
+  stripeSubscriptionId   String? @unique @map(name: "stripe_subscription_id")
+  stripePriceId          String? @map(name: "stripe_price_id")
+  stripeCurrentPeriodEnd DateTime? @unique @map(name: "stripe_current_period_end")
+}

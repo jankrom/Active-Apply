@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@prisma/client": "^5.16.2",
     "@supabase/ssr": "latest",
     "@supabase/supabase-js": "latest",
     "autoprefixer": "10.4.17",
@@ -15,6 +16,7 @@
     "lucide-react": "^0.407.0",
     "next": "latest",
     "postcss": "8.4.33",
+    "prisma": "^5.16.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "recharts": "^2.12.7",
