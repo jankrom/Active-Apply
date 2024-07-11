@@ -4,6 +4,10 @@
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
+// TODO when starting a new DB
+// 1- Manually set foreign keys in supabase for userId
+// 2- Set trigger on supabase to create a Profile when a new user is made
+
 generator client {
   provider = "prisma-client-js"
   previewFeatures = ["multiSchema"]
@@ -18,7 +22,7 @@ datasource db {
 
 model Spreadsheet {
   id         String  @id @db.Uuid @default(dbgenerated("gen_random_uuid()"))
-  userId     String  @db.Uuid
+  userId     String  @db.Uuid // manually set foreign key in supabase
   name       String   
   totalJobs  Int     @default(0)
   rows       SpreadsheetRow[]
@@ -32,12 +36,12 @@ model SpreadsheetRow {
   date           DateTime @default(now())
   spreadsheet    Spreadsheet @relation(fields: [spreadsheetId], references: [id])
   spreadsheetId  String @db.Uuid
-  userId         String @db.Uuid
+  userId         String @db.Uuid // manually set foreign key in supabase
 }
 
 model Profile {
   id                     String @id @default(cuid())
-  userId                 String @unique @db.Uuid
+  userId                 String @unique @db.Uuid // manually set foreign key in supabase
   currentlyPaid          Boolean @default(false)
   stripeCustomerId       String? @unique @map(name: "stripe_customer_id")
   stripeSubscriptionId   String? @unique @map(name: "stripe_subscription_id")
