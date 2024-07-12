@@ -13,9 +13,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { PlusIcon } from "lucide-react"
-import { Checkbox } from "./ui/checkbox"
 import { createSpreadsheet } from "@/lib/create-spreadsheet"
-import { FormEventHandler } from "react"
 import toast from "react-hot-toast"
 
 export function AddSpreadsheetButton() {
@@ -32,12 +30,14 @@ export function AddSpreadsheetButton() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="fixed bottom-10 right-10 rounded-full">
-          <PlusIcon
-            size="40"
-            className="shadow-lg bg-gradient-to-t from-[#0059bb] to-[#a7c6ff] rounded-full hover:scale-125 transition hover:cursor-pointer"
-          />
-        </Button>
+        <PlusIcon
+          size="40"
+          className="shadow-lg bg-gradient-to-t from-[#0059bb]
+            to-[#a7c6ff] hover:scale-125 transition
+            hover:cursor-pointer fixed bottom-10 right-10 rounded-full text-white"
+        >
+          <Button className="fixed bottom-10 right-10 rounded-full"></Button>
+        </PlusIcon>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px] bg-[#111827] border-0 text-white">
         <form onSubmit={onSubmit}>
@@ -55,7 +55,7 @@ export function AddSpreadsheetButton() {
               <Input
                 id="name"
                 name="name"
-                defaultValue="Fall Recruiting Season..."
+                placeholder="Fall Recruiting Season..."
                 className="col-span-3 text-black border-black bg-gray-50"
               />
             </div>

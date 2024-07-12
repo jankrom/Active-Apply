@@ -1,13 +1,31 @@
 import Chart from "./chart"
 
-const UserCharts = () => {
+interface Props {
+  spreadsheets: {
+    id: string
+    userId: string
+    name: string
+    totalJobs: number
+  }[]
+}
+
+const UserCharts = ({ spreadsheets }: Props) => {
+  const totalJobs = spreadsheets.reduce(
+    (sum, { totalJobs }) => sum + totalJobs,
+    0
+  )
+
   const data = {
-    total_jobs: 100,
-    dashboards: [
-      { name: "Fall Season", amount: 50 },
-      { name: "Spring Season", amount: 18 },
-      { name: "Summer Season", amount: 24 },
-    ],
+    total_jobs: totalJobs,
+    dashboards: spreadsheets,
+  } as {
+    total_jobs: number
+    dashboards: {
+      id: string
+      userId: string
+      name: string
+      totalJobs: number
+    }[]
   }
 
   return (

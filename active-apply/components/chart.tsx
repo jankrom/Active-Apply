@@ -16,20 +16,29 @@ let chartConfig = {
 } satisfies ChartConfig
 
 interface Props {
-  data: { total_jobs: number; dashboards: { name: string; amount: number }[] }
+  data: {
+    total_jobs: number | undefined
+    dashboards: {
+      id?: string
+      userId?: string
+      name: string
+      totalJobs: number
+    }[]
+  }
   time: true | false
 }
 
 const Chart = ({ data, time }: Props) => {
   // add fill color and change amount dynamcially
-  data.dashboards = data.dashboards.map(({ name, amount }, index) => {
+  data.dashboards = data.dashboards.map(({ name, totalJobs }, index) => {
     return {
       name,
-      amount: time
+      totalJobs: time
         ? Math.ceil(
-            (amount * Number(process.env.NEXT_PUBLIC_TIME_SAVED_PER_JOB)) / 60
+            (totalJobs * Number(process.env.NEXT_PUBLIC_TIME_SAVED_PER_JOB)) /
+              60
           )
-        : amount,
+        : totalJobs,
       fill: time
         ? `hsl(var(--chart-time-${index}))`
         : `hsl(var(--chart-${index}))`,
@@ -39,7 +48,8 @@ const Chart = ({ data, time }: Props) => {
   //   make total_jobs the minutes saved
   if (time) {
     data.total_jobs = Math.ceil(
-      (data.total_jobs * Number(process.env.NEXT_PUBLIC_TIME_SAVED_PER_JOB)) /
+      ((data?.total_jobs as number) *
+        Number(process.env.NEXT_PUBLIC_TIME_SAVED_PER_JOB)) /
         60
     )
   }
@@ -48,11 +58,13 @@ const Chart = ({ data, time }: Props) => {
   data.dashboards.forEach((dashboard) => {
     chartConfig = {
       ...chartConfig,
-      [dashboard.name]: {
-        label: dashboard.name,
+      [dashboard?.name as string]: {
+        label: dashboard?.name,
       },
     }
   })
+
+  console.log(data)
 
   return (
     <ChartContainer
@@ -66,7 +78,7 @@ const Chart = ({ data, time }: Props) => {
         />
         <Pie
           data={data.dashboards}
-          dataKey="amount"
+          dataKey="totalJobs"
           nameKey="name"
           innerRadius={60}
           strokeWidth={5}

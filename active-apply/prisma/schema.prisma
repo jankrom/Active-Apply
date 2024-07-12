@@ -6,7 +6,22 @@
 
 // TODO when starting a new DB
 // 1- Manually set foreign keys in supabase for userId
-// 2- Set trigger on supabase to create a Profile when a new user is made
+// 2- Make the function for the trigger
+// 3- Set trigger on supabase to create a Profile when a new user is made
+
+// begin
+// insert into public."Profile"(id)
+// values(new.id);
+// return new;
+// end;
+
+// -- trigger the function every time a new row is created in auth.users
+// create trigger on_auth_users_insert
+// after insert on auth.users
+// for each row
+// execute function public.create_profile_on_user_insert();
+
+// drop trigger on_auth_users_insert on auth.users;
 
 generator client {
   provider = "prisma-client-js"
@@ -22,7 +37,8 @@ datasource db {
 
 model Spreadsheet {
   id         String  @id @db.Uuid @default(dbgenerated("gen_random_uuid()"))
-  userId     String  @db.Uuid // manually set foreign key in supabase
+  user       Profile @relation(fields: [userId], references: [id])
+  userId     String  @db.Uuid
   name       String   
   totalJobs  Int     @default(0)
   rows       SpreadsheetRow[]
@@ -31,17 +47,22 @@ model Spreadsheet {
 model SpreadsheetRow {
   id             Int     @id @default(autoincrement())
   companyName    String
+  jobUrl         String
+  status         String
   position       String?
   positionNumber String?
   date           DateTime @default(now())
   spreadsheet    Spreadsheet @relation(fields: [spreadsheetId], references: [id])
   spreadsheetId  String @db.Uuid
-  userId         String @db.Uuid // manually set foreign key in supabase
+  user           Profile @relation(fields: [userId], references: [id])
+  userId         String @db.Uuid
 }
 
 model Profile {
-  id                     String @id @default(cuid())
-  userId                 String @unique @db.Uuid // manually set foreign key in supabase
+  id                     String @id @unique @db.Uuid // manually set foreign key in supabase
+  spreadsheetRows        SpreadsheetRow[]
+  spreadsheet            Spreadsheet[]
+  defaultSpreadsheet     String  @default("")
   currentlyPaid          Boolean @default(false)
   stripeCustomerId       String? @unique @map(name: "stripe_customer_id")
   stripeSubscriptionId   String? @unique @map(name: "stripe_subscription_id")
