@@ -48,7 +48,7 @@ const SpreadsheetRow = ({ spreadsheetRow, spreadsheetId }: Props) => {
               : "bg-gray-50"
           }`}
         >
-          {spreadsheetRow.status}
+          <p className="mr-6">{spreadsheetRow.status}</p>
         </div>
       </div>
     </>

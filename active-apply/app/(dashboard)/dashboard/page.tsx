@@ -19,7 +19,7 @@ const getInfo = async () => {
       isValid: false,
       spreadhseets: null,
       user: null,
-      defaultSpreadsheet: "",
+      defaultSpreadsheet: { id: "", name: "" },
     } // return false if no user exists
 
   let response
@@ -34,13 +34,16 @@ const getInfo = async () => {
       where: { id: user.id },
     })
 
-    defaultSpreadsheet = profile?.defaultSpreadsheet
+    defaultSpreadsheet = {
+      name: profile?.defaultSpreadsheet,
+      id: profile?.defaultSpreadsheetId,
+    }
   } catch (error) {
     return {
       isValid: false,
       spreadsheet: null,
       user: null,
-      defaultSpreadsheet: "",
+      defaultSpreadsheet: { id: "", name: "" },
     }
   }
 
@@ -49,7 +52,7 @@ const getInfo = async () => {
       isValid: false,
       spreadsheets: null,
       user: null,
-      defaultSpreadsheet: "",
+      defaultSpreadsheet: { id: "", name: "" },
     } // return false if spreadsheet doesnt exist
 
   // validate that user made the spreadsheet
@@ -79,8 +82,8 @@ const DashboardPage = async () => {
         defaultSpreadsheet={defaultSpreadsheet}
       />
       <Spreadhsheets spreadsheets={spreadsheets} />
-      <AddSpreadsheetButton />
-      {!defaultSpreadsheet && <NewUserModal />}
+      <AddSpreadsheetButton defaultSpreadsheet={defaultSpreadsheet} />
+      {!defaultSpreadsheet?.id && <NewUserModal />}
     </div>
   )
 }

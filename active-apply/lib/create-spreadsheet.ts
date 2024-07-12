@@ -24,7 +24,7 @@ export const createSpreadsheet = async (spreadsheetName: string) => {
 
     await prismadb.profile.update({
       where: { id: user.id },
-      data: { defaultSpreadsheet: spreadsheetName },
+      data: { defaultSpreadsheet: spreadsheetName, defaultSpreadsheetId: id},
     })
   } catch (error: any) {
     return error

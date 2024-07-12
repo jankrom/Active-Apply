@@ -15,13 +15,38 @@ const Form = () => {
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10))
   const [loading, setLoading] = useState(false)
 
-  const handleSubmitClick = () => {
+  const handleSubmit = async (event) => {
     setLoading(!loading)
-    setTimeout(() => {
-      setLoading(false)
-    }, 1000)
 
-    toast.success("YAY")
+    event.preventDefault()
+
+    const inputs = {
+      companyName: event.target.elements.companyName.value,
+      jobUrl: event.target.elements.jobUrl.value,
+      position: event.target.elements?.position.value,
+      positionNumber: event.target.elements?.positionNumber.value,
+    }
+
+    const response = await fetch(
+      `${import.meta.env.VITE_ORIGIN_URL}/api/chrome-extension/submit-form`,
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(inputs),
+      }
+    )
+
+    const status = response?.status
+
+    const text = await response.text()
+
+    if (status === 200) toast.success("Added job!")
+    else toast.error(text)
+
+    setLoading(false)
   }
 
   return (
@@ -41,17 +66,16 @@ const Form = () => {
         flexDirection: "column",
         alignItems: "center",
       }}
-      noValidate
       autoComplete="off"
-      method="POST"
       textAlign="center"
+      onSubmit={handleSubmit}
     >
       <TextField
         required
         className="form-input"
-        id="company-url"
-        label="Company URL"
-        name="company-url"
+        id="jobUrl"
+        label="Job URL"
+        name="jobUrl"
         type="text"
         InputLabelProps={{
           shrink: true,
@@ -62,8 +86,8 @@ const Form = () => {
       <TextField
         required
         className="form-input"
-        id="company-name"
-        name="company-name"
+        id="companyName"
+        name="companyName"
         label="Company Name"
         type="text"
         InputLabelProps={{
@@ -86,8 +110,8 @@ const Form = () => {
       />
       <TextField
         className="form-input"
-        id="position-number"
-        name="position-number"
+        id="positionNumber"
+        name="positionNumber"
         label="Position Number"
         type="text"
         InputLabelProps={{
@@ -96,7 +120,7 @@ const Form = () => {
         value={positionNumber}
         onChange={(e) => setPositionNumber(e.target.value)}
       />
-      <TextField
+      {/* <TextField
         className="form-input"
         id="date"
         name="date"
@@ -107,14 +131,14 @@ const Form = () => {
         }}
         value={date}
         onChange={(e) => setDate(e.target.value)}
-      />
+      /> */}
       <Box>
         <Box sx={{ m: 1, position: "relative" }}>
           <Button
             id="submit-btn"
+            type="submit"
             variant="contained"
             endIcon={<SendIcon />}
-            onClick={handleSubmitClick}
             disabled={loading}
             sx={{
               "&:hover": { scale: "1.05" },

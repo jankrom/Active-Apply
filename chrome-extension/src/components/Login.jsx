@@ -7,7 +7,7 @@ const Login = () => {
   return (
     <div
       style={{
-        height: "432.5px",
+        height: "360.5px",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",

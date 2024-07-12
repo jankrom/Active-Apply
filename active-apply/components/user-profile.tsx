@@ -1,7 +1,5 @@
 import Link from "next/link"
 import UserCharts from "./user-charts"
-import prismadb from "@/lib/prismadb"
-import { User } from "@supabase/supabase-js"
 interface Props {
   spreadsheets: {
     id: string
@@ -9,7 +7,7 @@ interface Props {
     name: string
     totalJobs: number
   }[]
-  defaultSpreadsheet: string
+  defaultSpreadsheet: { id: string | undefined; name: string | undefined }
 }
 
 const UserProfile = async ({ spreadsheets, defaultSpreadsheet }: Props) => {
@@ -23,8 +21,8 @@ const UserProfile = async ({ spreadsheets, defaultSpreadsheet }: Props) => {
         <div>
           Currently adding to:{" "}
           <span className="font-medium">
-            {defaultSpreadsheet
-              ? defaultSpreadsheet
+            {defaultSpreadsheet?.name
+              ? defaultSpreadsheet?.name
               : "Make your first spreadsheet"}
           </span>
         </div>

@@ -16,7 +16,11 @@ import { PlusIcon } from "lucide-react"
 import { createSpreadsheet } from "@/lib/create-spreadsheet"
 import toast from "react-hot-toast"
 
-export function AddSpreadsheetButton() {
+interface Props {
+  defaultSpreadsheet: { id: string | undefined; name: string | undefined }
+}
+
+export function AddSpreadsheetButton({ defaultSpreadsheet }: Props) {
   const onSubmit = async (event: any) => {
     event.preventDefault()
 

@@ -64,6 +64,7 @@ model Profile {
   spreadsheetRows        SpreadsheetRow[]
   spreadsheet            Spreadsheet[]
   defaultSpreadsheet     String  @default("")
+  defaultSpreadsheetId   String  @default("")
   currentlyPaid          Boolean @default(false)
   stripeCustomerId       String? @unique @map(name: "stripe_customer_id")
   stripeSubscriptionId   String? @unique @map(name: "stripe_subscription_id")

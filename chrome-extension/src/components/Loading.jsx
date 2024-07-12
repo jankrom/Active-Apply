@@ -2,7 +2,7 @@ import { CircularProgress } from "@mui/material"
 
 const Loading = () => {
   return (
-    <div style={{ height: "432.5px" }}>
+    <div style={{ height: "360.5px" }}>
       <CircularProgress
         size={24}
         sx={{
