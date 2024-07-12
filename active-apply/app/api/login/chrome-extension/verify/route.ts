@@ -14,8 +14,6 @@ export async function GET(req: Request) {
     data: { user },
   } = await supabase.auth.getUser()
 
-  console.log(user)
-
   if (!user) return new NextResponse("Unauthorized", { status: 401 })
 
   //   successfully found user

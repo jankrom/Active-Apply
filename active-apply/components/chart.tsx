@@ -64,8 +64,6 @@ const Chart = ({ data, time }: Props) => {
     }
   })
 
-  console.log(data)
-
   return (
     <ChartContainer
       config={chartConfig}

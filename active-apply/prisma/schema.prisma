@@ -8,6 +8,7 @@
 // 1- Manually set foreign keys in supabase for userId
 // 2- Make the function for the trigger
 // 3- Set trigger on supabase to create a Profile when a new user is made
+// https://nextdev1111.hashnode.dev/triggers-in-supabase-for-making-new-rows
 
 // begin
 // insert into public."Profile"(id)
@@ -37,7 +38,7 @@ datasource db {
 
 model Spreadsheet {
   id         String  @id @db.Uuid @default(dbgenerated("gen_random_uuid()"))
-  user       Profile @relation(fields: [userId], references: [id])
+  user       Profile @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId     String  @db.Uuid
   name       String   
   totalJobs  Int     @default(0)
@@ -52,9 +53,9 @@ model SpreadsheetRow {
   position       String?
   positionNumber String?
   date           DateTime @default(now())
-  spreadsheet    Spreadsheet @relation(fields: [spreadsheetId], references: [id])
+  spreadsheet    Spreadsheet @relation(fields: [spreadsheetId], references: [id], onDelete: Cascade)
   spreadsheetId  String @db.Uuid
-  user           Profile @relation(fields: [userId], references: [id])
+  user           Profile @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId         String @db.Uuid
 }
 

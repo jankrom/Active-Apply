@@ -21,8 +21,6 @@ const isValidPage = async (spreadsheetId: string) => {
       where: { id: spreadsheetId },
       include: { rows: { orderBy: { date: "asc" } } },
     })
-
-    console.log(response)
   } catch (error) {
     return { isValid: false, spreadsheet: null }
   }
