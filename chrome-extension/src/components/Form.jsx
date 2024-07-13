@@ -4,15 +4,17 @@ import Button from "@mui/material/Button"
 import SendIcon from "@mui/icons-material/Send"
 import { CircularProgress } from "@mui/material"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import toast from "react-hot-toast"
 
-const Form = () => {
-  const [companyUrl, setCompanyUrl] = useState("")
-  const [companyName, setCompanyName] = useState("")
-  const [position, setPosition] = useState("")
-  const [positionNumber, setPositionNumber] = useState("")
-  const [date, setDate] = useState(new Date().toISOString().slice(0, 10))
+const Form = ({ jobInformation }) => {
+  const [companyUrl, setCompanyUrl] = useState(jobInformation?.jobUrl)
+  const [companyName, setCompanyName] = useState(jobInformation?.companyName)
+  const [position, setPosition] = useState(jobInformation?.position)
+  const [positionNumber, setPositionNumber] = useState(
+    jobInformation?.positionNumber
+  )
+  // const [date, setDate] = useState(new Date().toISOString().slice(0, 10))
   const [loading, setLoading] = useState(false)
 
   const handleSubmit = async (event) => {
