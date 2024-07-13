@@ -25,9 +25,11 @@ interface Props {
 export function AddSpreadsheetRowButton({ spreadsheetId }: Props) {
   const router = useRouter()
   const [open, setOpen] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const onSubmit = async (event: any) => {
     event.preventDefault()
+    setLoading(true)
 
     const inputs: {
       companyName: string
@@ -43,15 +45,14 @@ export function AddSpreadsheetRowButton({ spreadsheetId }: Props) {
       spreadsheetId: spreadsheetId,
     }
 
-    const { success, error } = (await createSpreadsheetRow(inputs)) as {
-      success: boolean
-      error: any
-    }
+    await toast.promise(createSpreadsheetRow(inputs), {
+      loading: "Creating Spreadsheet Row...",
+      success: <b>Job row created!</b>,
+      error: <b>Couldn't create job row</b>,
+    })
 
+    setLoading(false)
     setOpen(false)
-
-    if (!success) toast.error(`Couldn't create spreadsheet row: ${error}`)
-    else toast.success("Successfully created spreadsheet row!")
 
     router.refresh()
   }
@@ -132,6 +133,7 @@ export function AddSpreadsheetRowButton({ spreadsheetId }: Props) {
               className="hover:scale-110 transition"
               type="submit"
               variant="blue"
+              disabled={loading}
             >
               Create
             </Button>

@@ -24,11 +24,13 @@ const Spreadhsheet = ({ spreadsheet }: Props) => {
   }
 
   return (
-    <div className="mb-3">
-      <section className="bg-gradient-to-tr from-[#0059bb] via-[#0c7acd] to-[#199cdf] text-white shadow-sm max-w-[42rem] border border-black/5 rounded-xl overflow-hidden sm:pr-8 relative  hover:bg-gray-200 transition">
-        <div className="p-4 flex flex-col">
-          <h3 className="text-2xl font-semibold flex gap-2">
-            {spreadsheet?.name}{" "}
+    <div className="mb-3 w-full">
+      <section className="bg-gradient-to-tr from-[#0059bb] via-[#0c7acd] to-[#199cdf] text-white shadow-sm border border-black/5 rounded-xl overflow-hidden relative hover:bg-gray-200 transition">
+        <div className="p-4 flex flex-col max-w-[42rem]">
+          <h3 className="text-2xl font-semibold flex gap-2 max-w-[42rem] flex-wrap">
+            <span className="max-w-[42rem] break-words">
+              {spreadsheet?.name}{" "}
+            </span>
             <div className="flex gap-2">
               <Link
                 className="text-gray-700 flex items-center gap-2 text-[1.2rem] rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 transition cursor-pointer dark:text-white/60"
@@ -39,7 +41,7 @@ const Spreadhsheet = ({ spreadsheet }: Props) => {
               </Link>
             </div>
           </h3>
-          <div className="w-full flex gap-4">
+          <div className="w-full flex">
             <Chart data={data} time={false} />
             <Chart data={data} time={true} />
           </div>

@@ -15,7 +15,7 @@ const Spreadhsheets = ({ spreadsheets }: Props) => {
       <h2 className="text-2xl lg:text-4xl font-bold text-white">
         Your Job Spreadsheets
       </h2>
-      <div className="flex flex-col items-center min-w-full">
+      <div className="flex flex-col items-center max-w-full">
         {spreadsheets.map((spreadhsheet, index) => (
           <Spreadhsheet key={index} spreadsheet={spreadhsheet} />
         ))}

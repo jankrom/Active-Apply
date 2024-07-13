@@ -1,4 +1,5 @@
 import { AddSpreadsheetRowButton } from "@/components/spreadhsheet-add-row-btn"
+import SpreadsheetHeader from "@/components/spreadsheet-header"
 import SpreadsheetRow from "@/components/spreadsheet-row"
 import prismadb from "@/lib/prismadb"
 import { createClient } from "@/utils/supabase/server"
@@ -42,7 +43,10 @@ export default async function SpreadsheetPage({
 
   return (
     <div className="w-full flex flex-col items-center mt-4 gap-12">
-      <h2 className="text-4xl font-bold text-white">{spreadsheet.name}</h2>
+      <SpreadsheetHeader
+        spreadsheetName={spreadsheet?.name}
+        spreadsheetId={spreadsheet?.id}
+      />
       <div className="w-full flex flex-col items-center">
         <div className="w-full grid grid-cols-6 bg-[#0059bb] shadow-2xl text-gray-200 p-4 rounded-t-xl font-semibold">
           <div className="text-center">Company Name</div>

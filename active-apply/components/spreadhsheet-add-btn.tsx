@@ -15,20 +15,26 @@ import { Label } from "@/components/ui/label"
 import { PlusIcon } from "lucide-react"
 import { createSpreadsheet } from "@/lib/create-spreadsheet"
 import toast from "react-hot-toast"
+import { useState } from "react"
 
 interface Props {
   defaultSpreadsheet: { id: string | undefined; name: string | undefined }
 }
 
 export function AddSpreadsheetButton({ defaultSpreadsheet }: Props) {
+  const [loading, setLoading] = useState(false)
+
   const onSubmit = async (event: any) => {
     event.preventDefault()
+    setLoading(true)
 
-    const error = await createSpreadsheet(event.target.elements.name.value)
+    await toast.promise(createSpreadsheet(event.target.elements.name.value), {
+      loading: "Creating Spreadsheet...",
+      success: <b>Spreadsheet created!</b>,
+      error: <b>Couldn't create spreadsheet</b>,
+    })
 
-    if (error !== undefined)
-      toast.error(`Couldn't create spreadsheet: ${error}`)
-    else toast.success("Successfully created spreadsheet!")
+    setLoading(false)
   }
 
   return (
@@ -69,6 +75,7 @@ export function AddSpreadsheetButton({ defaultSpreadsheet }: Props) {
               className="hover:scale-110 transition"
               type="submit"
               variant="blue"
+              disabled={loading}
             >
               Create
             </Button>

@@ -20,11 +20,14 @@ const UserProfile = async ({ spreadsheets, defaultSpreadsheet }: Props) => {
       <div className="flex flex-col items-center">
         <div>
           Currently adding to:{" "}
-          <span className="font-medium">
+          <Link
+            className="font-medium"
+            href={`/spreadsheet/${defaultSpreadsheet.id}`}
+          >
             {defaultSpreadsheet?.name
               ? defaultSpreadsheet?.name
               : "Make your first spreadsheet"}
-          </span>
+          </Link>
         </div>
         <Link
           className="underline text-black text-xs hover:scale-110 transition"

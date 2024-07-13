@@ -12,7 +12,7 @@ export const createSpreadsheet = async (spreadsheetName: string) => {
     error,
   } = await supabase.auth.getUser()
 
-  if (!user) return
+  if (!user) throw new Error("User not authenticated")
 
   let redirectId: string = ""
 
@@ -24,10 +24,10 @@ export const createSpreadsheet = async (spreadsheetName: string) => {
 
     await prismadb.profile.update({
       where: { id: user.id },
-      data: { defaultSpreadsheet: spreadsheetName, defaultSpreadsheetId: id},
+      data: { defaultSpreadsheet: spreadsheetName, defaultSpreadsheetId: id },
     })
   } catch (error: any) {
-    return error
+    throw new Error("Error creating spreadsheet")
   }
 
   redirect(`spreadsheet/${redirectId}`)

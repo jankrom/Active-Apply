@@ -22,10 +22,9 @@ export const createSpreadsheetRow = async ({
 
   const {
     data: { user },
-    error,
   } = await supabase.auth.getUser()
 
-  if (!user) return
+  if (!user) throw new Error("User not authenticated")
 
   const data = {
     spreadsheetId,
@@ -42,7 +41,7 @@ export const createSpreadsheetRow = async ({
     const spreadsheet = await prismadb.spreadsheet.findUnique({
       where: { id: spreadsheetId },
     })
-    if (spreadsheet?.userId !== user.id) return { success: false, error } // can only add to your own spreadsheet
+    if (spreadsheet?.userId !== user.id) throw new Error("Not allowed") // can only add to your own spreadsheet
 
     // create new spreadsheet row
     await prismadb.spreadsheetRow.create({
@@ -57,7 +56,7 @@ export const createSpreadsheetRow = async ({
       },
     })
   } catch (error: any) {
-    return { success: false, error }
+    throw new Error("Error creating spreadsheet row")
   }
 
   return { success: true, error: null }

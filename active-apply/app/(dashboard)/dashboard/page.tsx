@@ -76,7 +76,7 @@ const DashboardPage = async () => {
     notFound()
 
   return (
-    <div className="w-full lg:flex lg:justify-between gap-8 px-8 pt-12">
+    <div className="w-full lg:flex lg:justify-between gap-16 px-8 pt-12">
       <UserProfile
         spreadsheets={spreadsheets}
         defaultSpreadsheet={defaultSpreadsheet}
