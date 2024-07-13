@@ -25,7 +25,7 @@ const Spreadhsheet = ({ spreadsheet }: Props) => {
 
   return (
     <div className="mb-3 w-full">
-      <section className="bg-gradient-to-tr from-[#0059bb] via-[#0c7acd] to-[#199cdf] text-white shadow-sm border border-black/5 rounded-xl overflow-hidden relative hover:bg-gray-200 transition">
+      <section className="flex flex-col items-center bg-gradient-to-tr from-[#0059bb] via-[#0c7acd] to-[#199cdf] text-white shadow-sm border border-black/5 rounded-xl break-words hover:bg-gray-200 transition">
         <div className="p-4 flex flex-col max-w-[42rem]">
           <h3 className="text-2xl font-semibold flex gap-2 max-w-[42rem] flex-wrap">
             <span className="max-w-[42rem] break-words">
@@ -41,7 +41,7 @@ const Spreadhsheet = ({ spreadsheet }: Props) => {
               </Link>
             </div>
           </h3>
-          <div className="w-full flex">
+          <div className="w-full flex gap-4">
             <Chart data={data} time={false} />
             <Chart data={data} time={true} />
           </div>

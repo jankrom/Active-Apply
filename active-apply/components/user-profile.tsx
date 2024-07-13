@@ -17,8 +17,8 @@ const UserProfile = async ({ spreadsheets, defaultSpreadsheet }: Props) => {
       <div>
         <UserCharts spreadsheets={spreadsheets} />
       </div>
-      <div className="flex flex-col items-center">
-        <div>
+      <div className="flex flex-col items-center max-w-full">
+        <div className="break-words max-w-full">
           Currently adding to:{" "}
           <Link
             className="font-medium"
