@@ -6,8 +6,8 @@ import { NextRequest, NextResponse } from "next/server"
 import { z } from "zod"
 import axios from "axios"
 import { load } from "cheerio"
-import prismadb from "@/lib/prismadb"
 import { createClient } from "@/utils/supabase/server"
+import { checkSubscription } from "@/lib/subscription"
 
 // api route to check add a spreadsheet row from extension
 export async function GET(req: NextRequest) {
@@ -33,10 +33,8 @@ export async function GET(req: NextRequest) {
 
   try {
     // first check that user paid
-    const profile = await prismadb.profile.findUnique({
-      where: { id: user.id },
-    })
-    if (!profile?.currentlyPaid) return NextResponse.json({}, { status: 404 })
+    const paid = await checkSubscription()
+    if (paid) return NextResponse.json({}, { status: 404 })
 
     // downloading the target web page
     // by performing an HTTP GET request in Axios

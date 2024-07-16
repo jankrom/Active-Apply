@@ -12,17 +12,23 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { createSpreadsheet } from "@/lib/create-spreadsheet"
+import { useState } from "react"
 import toast from "react-hot-toast"
 
 export function NewUserModal() {
+  const [loading, setLoading] = useState(false)
+
   const onSubmit = async (event: any) => {
     event.preventDefault()
+    setLoading(true)
 
-    const error = await createSpreadsheet(event.target.elements.name.value)
+    await toast.promise(createSpreadsheet(event.target.elements.name.value), {
+      loading: "Creating Spreadsheet...",
+      success: <b>Spreadsheet created!</b>,
+      error: <b>Couldn't create spreadsheet</b>,
+    })
 
-    if (error !== undefined)
-      toast.error(`Couldn't create spreadsheet: ${error}`)
-    else toast.success("Successfully created spreadsheet!")
+    setLoading(false)
   }
 
   return (
@@ -53,6 +59,7 @@ export function NewUserModal() {
               className="hover:scale-110 transition"
               type="submit"
               variant="blue"
+              disabled={loading}
             >
               Create
             </Button>

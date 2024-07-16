@@ -1,8 +1,10 @@
 import { NewUserModal } from "@/components/new-user-modal"
+import ProModal from "@/components/pro-modal"
 import { AddSpreadsheetButton } from "@/components/spreadhsheet-add-btn"
 import Spreadhsheets from "@/components/spreadsheets"
 import UserProfile from "@/components/user-profile"
 import prismadb from "@/lib/prismadb"
+import { checkSubscription } from "@/lib/subscription"
 import { createClient } from "@/utils/supabase/server"
 import { notFound } from "next/navigation"
 
@@ -18,7 +20,6 @@ const getInfo = async () => {
     return {
       isValid: false,
       spreadhseets: null,
-      user: null,
       defaultSpreadsheet: { id: "", name: "" },
     } // return false if no user exists
 
@@ -42,7 +43,6 @@ const getInfo = async () => {
     return {
       isValid: false,
       spreadsheet: null,
-      user: null,
       defaultSpreadsheet: { id: "", name: "" },
     }
   }
@@ -51,7 +51,6 @@ const getInfo = async () => {
     return {
       isValid: false,
       spreadsheets: null,
-      user: null,
       defaultSpreadsheet: { id: "", name: "" },
     } // return false if spreadsheet doesnt exist
 
@@ -59,13 +58,12 @@ const getInfo = async () => {
   return {
     isValid: true,
     spreadsheets: response,
-    user: user,
     defaultSpreadsheet: defaultSpreadsheet,
   }
 }
 
 const DashboardPage = async () => {
-  const { spreadsheets, isValid, user, defaultSpreadsheet } = await getInfo()
+  const { spreadsheets, isValid, defaultSpreadsheet } = await getInfo()
 
   if (
     !isValid ||
@@ -75,6 +73,8 @@ const DashboardPage = async () => {
   )
     notFound()
 
+  const isPro = await checkSubscription()
+
   return (
     <div className="w-full lg:flex lg:justify-between gap-16 px-8 pt-12">
       <UserProfile
@@ -83,6 +83,7 @@ const DashboardPage = async () => {
       />
       <Spreadhsheets spreadsheets={spreadsheets} />
       <AddSpreadsheetButton defaultSpreadsheet={defaultSpreadsheet} />
+      <ProModal isPro={isPro} />
       {!defaultSpreadsheet?.id && <NewUserModal />}
     </div>
   )

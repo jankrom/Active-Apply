@@ -3,7 +3,7 @@
 import { NextResponse } from "next/server"
 
 import { createClient } from "@/utils/supabase/server"
-import prismadb from "@/lib/prismadb"
+import { checkSubscription } from "@/lib/subscription"
 
 // api route to check if user is signed in. Called from chrome extension
 export async function GET(req: Request) {
@@ -19,14 +19,7 @@ export async function GET(req: Request) {
 
   if (!user) return new NextResponse("Unauthorized", { status: 401 })
 
-  let currentlyPaid = false
-
-  try {
-    const profile = await prismadb.profile.findUnique({
-      where: { id: user.id },
-    })
-    if (profile?.currentlyPaid) currentlyPaid = true
-  } catch (error) {}
+  let currentlyPaid = await checkSubscription()
 
   //   successfully found user
   return NextResponse.json({ currentlyPaid }, { status: 200 })

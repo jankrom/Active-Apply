@@ -1,7 +1,9 @@
+import ProModal from "@/components/pro-modal"
 import { AddSpreadsheetRowButton } from "@/components/spreadhsheet-add-row-btn"
 import SpreadsheetHeader from "@/components/spreadsheet-header"
 import SpreadsheetRow from "@/components/spreadsheet-row"
 import prismadb from "@/lib/prismadb"
+import { checkSubscription } from "@/lib/subscription"
 import { createClient } from "@/utils/supabase/server"
 import { notFound } from "next/navigation"
 
@@ -41,6 +43,8 @@ export default async function SpreadsheetPage({
 
   if (!isValid || !spreadsheet) notFound()
 
+  const isPro = await checkSubscription()
+
   return (
     <div className="w-full flex flex-col items-center mt-4 gap-12">
       <SpreadsheetHeader
@@ -65,6 +69,7 @@ export default async function SpreadsheetPage({
         ))}
         <AddSpreadsheetRowButton spreadsheetId={spreadsheetId} />
       </div>
+      <ProModal isPro={isPro} />
     </div>
   )
 }
