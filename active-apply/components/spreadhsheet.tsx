@@ -1,15 +1,17 @@
 import { ExternalLink } from "lucide-react"
 import Link from "next/link"
 import Chart from "./chart"
+import ChangeDefaultSpreadsheet from "./change-default-spreadsheet"
 
 interface Props {
   spreadsheet:
     | { id: string; userId: string; name: string; totalJobs: number }
     | null
     | undefined
+  isDefault: boolean
 }
 
-const Spreadhsheet = ({ spreadsheet }: Props) => {
+const Spreadhsheet = ({ spreadsheet, isDefault }: Props) => {
   const data = {
     total_jobs: spreadsheet?.totalJobs,
     dashboards: [spreadsheet],
@@ -41,6 +43,10 @@ const Spreadhsheet = ({ spreadsheet }: Props) => {
               </Link>
             </div>
           </h3>
+          <ChangeDefaultSpreadsheet
+            isDefault={isDefault}
+            spreadsheet={spreadsheet}
+          />
           <div className="w-full flex gap-4">
             <Chart data={data} time={false} />
             <Chart data={data} time={true} />

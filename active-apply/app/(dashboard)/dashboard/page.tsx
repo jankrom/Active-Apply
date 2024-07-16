@@ -81,7 +81,10 @@ const DashboardPage = async () => {
         spreadsheets={spreadsheets}
         defaultSpreadsheet={defaultSpreadsheet}
       />
-      <Spreadhsheets spreadsheets={spreadsheets} />
+      <Spreadhsheets
+        spreadsheets={spreadsheets}
+        defaultSpreadsheet={defaultSpreadsheet}
+      />
       <AddSpreadsheetButton defaultSpreadsheet={defaultSpreadsheet} />
       <ProModal isPro={isPro} />
       {!defaultSpreadsheet?.id && <NewUserModal />}
