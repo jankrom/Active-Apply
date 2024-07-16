@@ -30,16 +30,69 @@ body,
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
     --radius: 0.5rem;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
-    --chart-time-1: 122 6% 61%;
-    --chart-time-2: 173 8% 39%;
-    --chart-time-3: 197 7% 24%;
-    --chart-time-4: 43 4% 66%;
-    --chart-time-5: 27 7% 67%;
+
+    --chart-0: hsl(30, 76%, 57%); /* Orange */
+    --chart-time-0: hsl(210, 73%, 65%); /* Medium Blue */
+
+    --chart-1: hsl(60, 55%, 55%); /* Yellow */
+    --chart-time-1: hsl(270, 100%, 50%); /* Purple */
+
+    --chart-2: hsl(120, 60%, 50%); /* Green */
+    --chart-time-2: hsl(240, 100%, 79%); /** Indigo */
+
+    --chart-3: hsl(0, 100%, 50%); /* Red */
+    --chart-time-3: hsl(180, 100%, 50%); /* Teal */
+
+    --chart-4: hsl(300, 100%, 75%); /* Light Pink */
+    --chart-time-4: hsl(60, 100%, 75%); /* Light Yellow */
+
+    --chart-5: hsl(270, 75%, 50%); /* Purple */
+    --chart-time-5: hsl(90, 75%, 50%); /* Lime Green */
+
+    --chart-6: hsl(240, 100%, 75%); /* Light Blue */
+    --chart-time-6: hsl(60, 100%, 75%); /* Light Yellow */
+
+    --chart-7: hsl(180, 75%, 50%); /* Teal */
+    --chart-time-7: hsl(0, 75%, 50%); /* Red */
+
+    --chart-8: hsl(150, 100%, 75%); /* Light Green */
+    --chart-time-8: hsl(300, 100%, 75%); /* Light Pink */
+
+    --chart-9: hsl(330, 100%, 75%); /* Light Red */
+    --chart-time-9: hsl(150, 100%, 75%); /* Light Green */
+
+    --chart-10: hsl(210, 100%, 50%); /* Medium Blue */
+    --chart-time-10: hsl(30, 100%, 50%); /* Orange */
+
+    --chart-11: hsl(195, 100%, 75%); /* Sky Blue */
+    --chart-time-11: hsl(345, 100%, 75%); /* Salmon */
+
+    --chart-12: hsl(225, 100%, 75%); /* Periwinkle */
+    --chart-time-12: hsl(45, 100%, 75%); /* Pale Yellow */
+
+    --chart-13: hsl(285, 100%, 75%); /* Lavender */
+    --chart-time-13: hsl(105, 100%, 75%); /* Light Green */
+
+    --chart-14: hsl(345, 100%, 75%); /* Salmon */
+    --chart-time-14: hsl(195, 100%, 75%); /* Sky Blue */
+
+    --chart-15: hsl(60, 75%, 60%); /* Goldenrod */
+    --chart-time-15: hsl(240, 75%, 60%); /* Slate Blue */
+
+    --chart-16: hsl(90, 50%, 60%); /* Light Olive */
+    --chart-time-16: hsl(270, 50%, 60%); /* Orchid */
+
+    --chart-17: hsl(240, 60%, 50%); /* Indigo */
+    --chart-time-17: hsl(120, 60%, 50%); /* Green */
+
+    --chart-18: hsl(15, 100%, 50%); /* Vermilion */
+    --chart-time-18: hsl(195, 100%, 50%); /* Sky Blue */
+
+    --chart-19: hsl(75, 100%, 75%); /* Mint */
+    --chart-time-19: hsl(285, 100%, 75%); /* Lavender */
+
+    --chart-20: hsl(30, 100%, 70%); /* Peach */
+    --chart-time-20: hsl(210, 100%, 70%); /* Light Blue */
   }
 
   .dark {

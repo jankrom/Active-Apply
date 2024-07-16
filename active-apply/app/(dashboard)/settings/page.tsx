@@ -1,4 +1,5 @@
 import SubscriptionButton from "@/components/subscription-button"
+import { logout } from "@/lib/login-google"
 import { checkSubscription } from "@/lib/subscription"
 import { Settings } from "lucide-react"
 
@@ -23,6 +24,15 @@ const SettingsPage = async () => {
             : "You are currently on a free plan."}
         </div>
         <SubscriptionButton isPro={isPro} />
+        <form>
+          <button
+            type="submit"
+            formAction={logout}
+            className="text-sm underline hover:cursor-pointer"
+          >
+            Logout
+          </button>
+        </form>
       </div>
     </div>
   )

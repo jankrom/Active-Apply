@@ -39,9 +39,7 @@ const Chart = ({ data, time }: Props) => {
               60
           )
         : totalJobs,
-      fill: time
-        ? `hsl(var(--chart-time-${index}))`
-        : `hsl(var(--chart-${index}))`,
+      fill: time ? `var(--chart-time-${index})` : `var(--chart-${index})`,
     }
   })
 
