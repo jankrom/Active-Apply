@@ -65,9 +65,9 @@ export function AddSpreadsheetRowButton({ spreadsheetId }: Props) {
           size="40"
           className="shadow-lg bg-gradient-to-t from-[#0059bb]
             to-[#a7c6ff] hover:scale-125 transition
-            hover:cursor-pointer fixed bottom-10 right-10 rounded-full text-white"
+            hover:cursor-pointer rounded-full text-white mt-4 mb-8"
         >
-          <Button className="fixed bottom-10 right-10 rounded-full"></Button>
+          <Button className="rounded-full"></Button>
         </PlusIcon>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px] bg-[#111827] border-0 text-white">

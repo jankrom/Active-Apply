@@ -1,4 +1,5 @@
 import Spreadhsheet from "./spreadhsheet"
+import { AddSpreadsheetButton } from "./spreadhsheet-add-btn"
 
 interface Props {
   spreadsheets: {
@@ -24,6 +25,7 @@ const Spreadhsheets = ({ spreadsheets, defaultSpreadsheet }: Props) => {
             isDefault={defaultSpreadsheet.id === spreadhsheet.id}
           />
         ))}
+        <AddSpreadsheetButton defaultSpreadsheet={defaultSpreadsheet} />
       </div>
     </div>
   )

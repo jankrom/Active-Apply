@@ -44,7 +44,7 @@ export function AddSpreadsheetButton({ defaultSpreadsheet }: Props) {
           size="40"
           className="shadow-lg bg-gradient-to-t from-[#0059bb]
             to-[#a7c6ff] hover:scale-125 transition
-            hover:cursor-pointer fixed bottom-10 right-10 rounded-full text-white"
+            hover:cursor-pointer rounded-full text-white mb-8"
         >
           <Button className="rounded-full"></Button>
         </PlusIcon>
