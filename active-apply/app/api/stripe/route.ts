@@ -46,7 +46,7 @@ export async function GET() {
               name: "Active Apply Pro",
               description: "Unlock autofill capabilites",
             },
-            unit_amount: 999,
+            unit_amount: 399,
             recurring: { interval: "month" },
           },
           quantity: 1,
