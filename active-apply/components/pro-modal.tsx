@@ -81,6 +81,14 @@ const ProModal = ({ isPro }: { isPro: boolean }) => {
                 </div>
               </div>
             </Card>
+            <video
+              controls
+              autoPlay
+              muted
+              className="w-full mt-8 rounded-lg border bg-black"
+            >
+              <source src="/pro-video.mp4" type="video/mp4" />
+            </video>
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>

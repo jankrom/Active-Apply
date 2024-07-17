@@ -64,12 +64,14 @@ export default async function Home() {
               </Button>
             </a>
           </div>
-          <Image
-            width={1024}
-            height={632}
-            alt="Pandem.dev hero image"
-            src="/active-apply-icon.svg"
-          />
+          <video
+            controls
+            autoPlay
+            muted
+            className="w-full mt-8 rounded-lg border bg-black"
+          >
+            <source src="/hero-video.mp4" type="video/mp4" />
+          </video>
         </div>
         <div className="flex flex-col md:pt-24 md:gap-36 gap-24 items-center">
           <div className="flex flex-col gap-12 items-center">
