@@ -4,6 +4,7 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import ToasterProvider from "@/components/toaster-provides"
 import CrispProvider from "@/components/crisp-provider"
+import { Analytics } from "@vercel/analytics/react"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -22,6 +23,7 @@ export default function RootLayout({
         name="google-site-verification"
         content="exmNUp6xHcuRPVu4tgsaOJ-SzU7WnxMrlCvFMyZjPDE"
       />
+      <Analytics />
       <CrispProvider />
       <body className={`bg-[#111827] ${inter.className}`}>
         <ToasterProvider />
