@@ -45,6 +45,7 @@ export async function updateSession(request: NextRequest) {
     !request.nextUrl.pathname.startsWith("/auth/callback") &&
     !request.nextUrl.pathname.startsWith("/api/login") &&
     !request.nextUrl.pathname.startsWith("/api/stripe/webhook") &&
+    !request.nextUrl.pathname.startsWith("/hero-video.mp4") &&
     request.nextUrl.pathname !== "/"
   ) {
     // no user, potentially respond by redirecting the user to the login page

@@ -6,6 +6,7 @@ import { Timer, Workflow } from "lucide-react"
 import Link from "next/link"
 import { createClient } from "@/utils/supabase/server"
 import { MdAutoFixHigh, MdMoneyOff, MdOutlineAttachMoney } from "react-icons/md"
+import HeroVideo from "@/components/hero-video"
 
 export default async function Home() {
   const supabase = createClient()
@@ -64,14 +65,7 @@ export default async function Home() {
               </Button>
             </a>
           </div>
-          <video
-            controls
-            autoPlay
-            muted
-            className="w-full mt-8 rounded-lg border bg-black"
-          >
-            <source src="/hero-video.mp4" type="video/mp4" />
-          </video>
+          <HeroVideo />
         </div>
         <div className="flex flex-col md:pt-24 md:gap-36 gap-24 items-center">
           <div className="flex flex-col gap-12 items-center">
