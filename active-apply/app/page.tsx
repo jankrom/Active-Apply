@@ -49,8 +49,8 @@ export default async function Home() {
             Apply Smarter, Not Harder
           </Typography>
           <Typography className="max-w-2xl" variant="h5">
-            Make your job hunt more efficient, use a Chrome extension that
-            tracks applications with only 2 clicks.
+            Make your job hunt more efficient and organized. Use a Chrome
+            extension that tracks your applications with only 2 clicks.
           </Typography>
           <div className="flex gap-4">
             <Link href="/dashboard">

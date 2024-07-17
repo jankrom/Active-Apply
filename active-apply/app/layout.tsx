@@ -11,7 +11,6 @@ export const metadata: Metadata = {
   title: "Active Apply",
   description: "Easily track where you apply",
 }
-
 export default function RootLayout({
   children,
 }: {
@@ -19,6 +18,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <meta
+        name="google-site-verification"
+        content="exmNUp6xHcuRPVu4tgsaOJ-SzU7WnxMrlCvFMyZjPDE"
+      />
       <CrispProvider />
       <body className={`bg-[#111827] ${inter.className}`}>
         <ToasterProvider />
