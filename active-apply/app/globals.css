@@ -31,8 +31,8 @@ body,
     --ring: 222.2 84% 4.9%;
     --radius: 0.5rem;
 
-    --chart-0: hsl(30, 76%, 57%); /* Orange */
-    --chart-time-0: hsl(210, 73%, 65%); /* Medium Blue */
+    --chart-3: hsl(0, 100%, 50%); /* Red */
+    --chart-time-3: hsl(210, 73%, 65%); /* Medium Blue */
 
     --chart-1: hsl(60, 55%, 55%); /* Yellow */
     --chart-time-1: hsl(270, 100%, 50%); /* Purple */
@@ -40,8 +40,8 @@ body,
     --chart-2: hsl(120, 60%, 50%); /* Green */
     --chart-time-2: hsl(240, 100%, 79%); /** Indigo */
 
-    --chart-3: hsl(0, 100%, 50%); /* Red */
-    --chart-time-3: hsl(180, 100%, 50%); /* Teal */
+    --chart-0: hsl(30, 100%, 50%); /* Orange */
+    --chart-time-0: hsl(180, 100%, 50%); /* Teal */
 
     --chart-4: hsl(300, 100%, 75%); /* Light Pink */
     --chart-time-4: hsl(60, 100%, 75%); /* Light Yellow */

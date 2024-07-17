@@ -6,5 +6,11 @@
     "default_popup": "index.html"
   },
   "permissions": ["identity", "tabs", "storage"],
-  "host_permissions": ["https://localhost:*/*", "http://localhost:*/*"]
+  "host_permissions": ["https://localhost:*/*", "http://localhost:*/*"],
+  "icons": {
+    "16": "icon16.png",
+    "32": "icon32.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
 }

@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <CrispProvider />
-      <body className={inter.className}>
+      <body className={`bg-[#111827] ${inter.className}`}>
         <ToasterProvider />
         {children}
       </body>
