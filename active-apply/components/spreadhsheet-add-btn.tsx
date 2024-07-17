@@ -67,6 +67,7 @@ export function AddSpreadsheetButton({ defaultSpreadsheet }: Props) {
                 name="name"
                 placeholder="Fall Recruiting Season..."
                 className="col-span-3 text-black border-black bg-gray-50"
+                autoComplete="off"
               />
             </div>
           </div>

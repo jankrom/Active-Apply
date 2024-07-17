@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button"
 import Typography from "@/components/ui/typography"
 import Image from "next/image"
 import Feature from "@/components/feature"
-import { ArrowUpDown, SettingsIcon, Timer, Workflow } from "lucide-react"
+import { Timer, Workflow } from "lucide-react"
 import Link from "next/link"
 import { createClient } from "@/utils/supabase/server"
 import { MdAutoFixHigh, MdMoneyOff, MdOutlineAttachMoney } from "react-icons/md"
@@ -52,11 +52,18 @@ export default async function Home() {
             Make your job hunt more efficient, use a Chrome extension that
             tracks applications with only 2 clicks.
           </Typography>
-          <Link href="/dashboard">
-            <Button size="tiny" variant="blue">
-              {`Get Started`}
-            </Button>
-          </Link>
+          <div className="flex gap-4">
+            <Link href="/dashboard">
+              <Button size="tiny" variant="blue">
+                {`Dashboard`}
+              </Button>
+            </Link>
+            <a>
+              <Button size="tiny" variant="secondary">
+                {`Chrome Extension`}
+              </Button>
+            </a>
+          </div>
           <Image
             width={1024}
             height={632}
@@ -87,7 +94,7 @@ export default async function Home() {
               />
             </div>
           </div>
-          <div className="flex flex-col gap-6 max-w-2xl items-center mb-16">
+          <div className="flex flex-col gap-6 max-w-2xl items-center">
             <Typography className="max-w-2xl" variant="h1">
               Pricing
             </Typography>
@@ -107,6 +114,29 @@ export default async function Home() {
                 />
               </div>
             </div>
+          </div>
+          <div className="flex flex-col gap-6 max-w-2xl items-center mb-16">
+            <Typography className="max-w-2xl" variant="h1">
+              Guide
+            </Typography>
+            <Typography className="max-w-2xl" variant="h5">
+              1 - Login and make your first spreadsheet.
+            </Typography>
+            <Typography className="max-w-2xl" variant="h5">
+              2 - Download the Active Apply{" "}
+              <a href="" className="underline">
+                chrome extension.
+              </a>
+            </Typography>
+            <Typography className="max-w-2xl" variant="h5">
+              3 - Open extension on a job application and fill in job details.
+            </Typography>
+            <Typography className="max-w-2xl" variant="h5">
+              4 - Submit to your default spreadsheet.
+            </Typography>
+            <Typography className="max-w-2xl" variant="h5">
+              5 - View your tracked jobs and keep applying!
+            </Typography>
           </div>
         </div>
       </div>
