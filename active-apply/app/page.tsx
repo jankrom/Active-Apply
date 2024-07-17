@@ -59,7 +59,10 @@ export default async function Home() {
                 {`Dashboard`}
               </Button>
             </Link>
-            <a>
+            <a
+              target="_blank"
+              href="https://chromewebstore.google.com/detail/active-apply/hnnhhhplekamcbcnnffcbjddinlmgnhc"
+            >
               <Button size="tiny" variant="secondary">
                 {`Chrome Extension`}
               </Button>
@@ -120,7 +123,11 @@ export default async function Home() {
             </Typography>
             <Typography className="max-w-2xl" variant="h5">
               2 - Download the Active Apply{" "}
-              <a href="" className="underline">
+              <a
+                target="_blank"
+                href="https://chromewebstore.google.com/detail/active-apply/hnnhhhplekamcbcnnffcbjddinlmgnhc"
+                className="underline"
+              >
                 chrome extension.
               </a>
             </Typography>
